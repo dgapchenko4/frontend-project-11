@@ -1,0 +1,17 @@
+---
+root: true
+
+env:
+  browser: true
+
+parserOptions:
+  ecmaVersion: 2022
+
+extends:
+  - 'airbnb-base'
+
+rules:
+  no-console: 0
+  import/extensions: 0
+  import/no-extraneous-dependencies: 0
+  no-param-reassign: 0
