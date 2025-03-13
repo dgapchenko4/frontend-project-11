@@ -1,17 +1,19 @@
 ---
-root: true
 
 env:
   browser: true
-
+  es2021: true
+extends: airbnb-base
+overrides: []
 parserOptions:
-  ecmaVersion: 2022
-
-extends:
-  - 'airbnb-base'
-
+  ecmaVersion: latest
+  sourceType: module
 rules:
+  import/extensions:
+    - error
+    # - ignorePackages
+    - js: always
   no-console: 0
-  import/extensions: 0
-  import/no-extraneous-dependencies: 0
-  no-param-reassign: 0
+  no-shadow: 0
+  no-underscore-dangle: [2, {"allow": ["__filename", "__dirname"]}]
+  class-methods-use-this: "off"

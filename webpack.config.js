@@ -12,12 +12,9 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'dist/index.html',
+      template: 'index.html',
     }),
   ],
-  output: {
-    clean: true,
-  },
   devServer: {
     client: {
       overlay: {
@@ -25,5 +22,9 @@ export default {
         warnings: false,
       },
     },
+
+  },
+  output: {
+    clean: true,
   },
 };
