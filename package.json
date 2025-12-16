@@ -2,20 +2,22 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "RSS агрегатор",
-  "main": "index.js",
   "type": "module",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
     "start": "webpack serve --mode development --open",
     "test": "playwright test",
-    "test:ci": "playwright test --config=playwright-ci.config.js",
-    "lint": "eslint . --ext .js,.jsx",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "keywords": ["rss", "aggregator", "hexlet"],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
