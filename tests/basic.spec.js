@@ -71,7 +71,23 @@ test.describe('RSS агрегатор - тесты валидации', () => {
     await expect(feedback).toHaveText('RSS уже существует');
   });
 
-  test('Ошибка: невалидный RSS (сайт без RSS)', async ({ page }) => {
+  test('Ошибка: невалидный RSS', async ({ page }) => {
+    // Мокаем запрос чтобы всегда возвращать ошибку
+    await page.route('**/*', async (route) => {
+      if (route.request().url().includes('google.com')) {
+        // Возвращаем невалидный XML
+        await route.fulfill({
+          status: 200,
+          contentType: 'text/html',
+          body: '<html>Not an RSS feed</html>',
+        });
+      } else {
+        await route.continue();
+      }
+    });
+
+    await page.goto('/');
+
     const input = page.locator('#url-input');
     const button = page.locator('button:has-text("Добавить")');
     const feedback = page.locator('.feedback');
@@ -79,6 +95,6 @@ test.describe('RSS агрегатор - тесты валидации', () => {
     await input.fill('https://google.com');
     await button.click();
 
-    await expect(feedback).toHaveText('Ресурс не содержит валидный RSS');
+    await expect(feedback).toHaveText('Ресурс не содержит валидный RSS', { timeout: 10000 });
   });
 });
