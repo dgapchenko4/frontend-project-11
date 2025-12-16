@@ -26,9 +26,9 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
   ],
-  webServer: {
+  /* webServer: {
     command: 'npm start',
     url: 'http://localhost:8080',
     reuseExistingServer: !process.env.CI,
-  },
+  }, */
 });

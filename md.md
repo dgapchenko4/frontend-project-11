@@ -200,3 +200,6 @@ test.describe('RSS агрегатор - тесты валидации', () => {
     await expect(feedback).toHaveText('Ресурс не содержит валидный RSS');
   });
 });
+
+
+"dev": "webpack --mode development",
